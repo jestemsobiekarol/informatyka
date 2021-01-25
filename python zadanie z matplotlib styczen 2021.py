@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jan 18 09:25:40 2021
+Created on Mon Jan 25 08:35:47 2021
 
 @author: karol
 """
-import matplotlib.pyplot as pyplot
+import matplotlib.pyplot as plt
+import numpy as np
 
 print("podaj A")
 A=float(input())
@@ -15,15 +16,26 @@ d=float(input())
 print("podaj f")
 f=float(input())
 
+print("podaj tmax")
+tmax=float(input())
+
+t = np.arange(0.0, tmax, 1)
+s = A*np.exp(-t/d) * np.sin(2*np.pi*f*t)
+
+fig, ax = plt.subplots()
+ax.plot(t, s)
+
+t = np.arange(0.0, tmax, 1)
+v = [2*np.pi*f * np.cos(2*np.pi*f*t)-(np.sin(2*np.pi*f*t)/d)] * A * np.exp(-t/d)
+
+fig, ax = plt.subplots()
+ax.plot(t, v)
+
+x = np.arange(0.0, tmax, 1)
+v=[2*np.pi*f * np.cos(2*np.pi*f*t)-(np.sin(2*np.pi*f*t)/d)] * A * np.exp(-t/d)
+
+fig, ax = plt.subplots()
+ax.plot(x, v)
 
 
-x=['1','2','3','4','5']
-y=['1','2','3','4','5']
- 
-𝑥(𝑡)=𝐴*exp(−𝑡*𝑑⁄)sin(2pi*𝑓*𝑡)
-
-
-pyplot.plot(x,y)
-pyplot.xlabel("t")
-pyplot.ylabel("x(t)")
-pyplot.show()
+plt.show()
